@@ -4,6 +4,9 @@
 ;; a matter of preference and may require some fiddling to match your
 ;; preferences
 
+;; Launch fullscreen
+(toggle-frame-fullscreen)
+
 ;; Turn off the menu bar at the top of each frame because it's distracting
 (menu-bar-mode -1)
 
