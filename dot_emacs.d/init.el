@@ -38,6 +38,11 @@
     ;; extra syntax highlighting for clojure
     clojure-mode-extra-font-locking
 
+    ;; allow ido usage in as many contexts as possible. see
+    ;; customizations/navigation.el line 23 for a description
+    ;; of ido
+    ido-completing-read+
+
     ;; Enhances M-x to allow easier execution of commands. Provides
     ;; a filterable list of possible commands in the minibuffer
     ;; http://www.emacswiki.org/emacs/Smex
@@ -62,7 +67,7 @@
     lsp-mode
     lsp-ui
     lsp-sourcekit
-))
+    ))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -144,7 +149,7 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector [base00 base08 base0B base0A base0D base0E base0D base05])
  '(ansi-term-color-vector
-   [unspecified base00 base08 base0B base0A base0D base0E base0D base05] t)
+   [unspecified base00 base08 base0B base0A base0D base0E base0D base05])
  '(coffee-tab-width 2)
  '(custom-enabled-themes '(base16-railscasts-dark))
  '(custom-safe-themes
