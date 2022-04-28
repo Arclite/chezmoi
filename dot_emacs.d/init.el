@@ -2,6 +2,9 @@
 ;; Packages
 ;;;;
 
+;; Start a server so multiple clients will use the same app
+(server-start)
+
 ;; Really disable Org mode keys
 (setq org-replace-disputed-keys t)
 

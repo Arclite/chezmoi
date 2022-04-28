@@ -1,4 +1,4 @@
-$Env:EDITOR="emacs"
+$Env:EDITOR="emacsclient"
 
 function exec {
     $command = ($args -join " ")
