@@ -42,3 +42,6 @@
 (add-to-list 'auto-mode-alist '("Appfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Deliverfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Matchfile\\'" . ruby-mode))
+
+;; Key bindings for uncommon characters
+(global-set-key (kbd "M-_") (lambda () (interactive) (insert-char #x2014)))
