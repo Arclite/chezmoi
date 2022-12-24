@@ -2,6 +2,11 @@
 (setq read-process-output-max (* 1024 1024))
 (setq gc-cons-threshold 100000000)
 
+;; allow customizing Projectile commands
+
+(put 'projectile-project-compilation-cmd 'safe-local-variable #'stringp)
+(put 'projectile-project-run-cmd 'safe-local-variable #'stringp)
+
 ;; set up for Swift
 
 (defun pado:sourcekit-lsp-path-xcrun-pwsh ()
@@ -14,3 +19,6 @@
 
 (defvar eglot-server-programs ())
 (add-to-list 'eglot-server-programs `(swift-mode . (,(pado:sourcekit-lsp-path-xcrun-pwsh))))
+
+(add-hook 'swift-mode-hook 'eglot-ensure)
+(add-hook 'swift-mode-hook 'company-mode)
