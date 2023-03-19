@@ -59,3 +59,4 @@
 
 ;; projectile everywhere!
 (projectile-global-mode)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
