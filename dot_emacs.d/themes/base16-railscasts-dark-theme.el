@@ -436,8 +436,12 @@
    `(erc-prompt-face ((t (:foreground ,base0D))))
    `(erc-timestamp-face ((t (:foreground ,base0C))))
 
-   `(helm-selection ((t (:distant-foreground "black", :background ,base03))))
-   `(helm-ff-file-extension ((t (:foreground ,base0E))))
+   `(helm-selection ((t (:distant-foreground ,base05, :background ,base02))))
+   `(helm-ff-directory ((t (:foreground ,base0C :weight bold))))
+   `(helm-ff-dotted-directory ((t (:foreground ,base0C :weight bold))))
+   `(helm-ff-file ((t (:foreground ,base05))))
+   `(helm-ff-file-extension ((t (:foreground ,base05))))
+   `(helm-source-header ((t (:foreground ,base0A :weight bold))))
 
    `(custom-variable-tag ((t (:foreground ,base0D))))
    `(custom-group-tag ((t (:foreground ,base0D))))
