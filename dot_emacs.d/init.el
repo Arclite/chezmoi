@@ -70,6 +70,9 @@
     lsp-mode
     lsp-ui
     lsp-sourcekit
+
+    ;; fuzzy searching everywhere
+    helm
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -170,4 +173,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(helm-ff-file-extension ((t (:extend t :foreground "#b6b3eb"))))
+ '(helm-selection ((t (:extend t :background "#5a647e" :distant-foreground "black")))))
