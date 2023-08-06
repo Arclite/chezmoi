@@ -436,6 +436,9 @@
    `(erc-prompt-face ((t (:foreground ,base0D))))
    `(erc-timestamp-face ((t (:foreground ,base0C))))
 
+   `(helm-selection-line ((t (:distant-foreground "black", :background ,base01))))
+   `(helm-ff-file-extension ((t (:foreground ,base0E))))
+
    `(custom-variable-tag ((t (:foreground ,base0D))))
    `(custom-group-tag ((t (:foreground ,base0D))))
    `(custom-state ((t (:foreground ,base0B)))))
