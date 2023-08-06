@@ -138,6 +138,7 @@
 
 (load "custom.el")
 (load "custom-org.el")
+(load "custom-helm.el")
 
 ;; React bindings
 (load "react.el")
@@ -152,7 +153,7 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector [base00 base08 base0B base0A base0D base0E base0D base05])
  '(ansi-term-color-vector
-   [unspecified base00 base08 base0B base0A base0D base0E base0D base05])
+   [unspecified base00 base08 base0B base0A base0D base0E base0D base05] t)
  '(coffee-tab-width 2)
  '(custom-enabled-themes '(base16-railscasts-dark))
  '(custom-safe-themes
@@ -163,7 +164,7 @@
  '(org-agenda-files '("~/Development/iOS/PlaygroundShare/shareplay.org"))
  '(org-startup-truncated nil)
  '(package-selected-packages
-   '(eglot powershell go-mode docker flycheck flymake-quickdef flymake-lua lua-mode counsel-jq json-mode docker-compose-mode magit dash dracula-theme ac-cider cider yaxception yaml-mode web-mode tagedit swift-mode spinner sourcekit smex seq restclient relative-line-numbers rainbow-delimiters queue projectile paredit org markdown-mode log4e js2-mode javap-mode inf-ruby ido-ubiquitous exec-path-from-shell elm-mode dockerfile-mode company color-theme clojure-mode-extra-font-locking base16-theme android-mode adaptive-wrap)))
+   '(helm-projectile helm eglot powershell go-mode docker flycheck flymake-quickdef flymake-lua lua-mode counsel-jq json-mode docker-compose-mode magit dash dracula-theme ac-cider cider yaxception yaml-mode web-mode tagedit swift-mode spinner sourcekit smex seq restclient relative-line-numbers rainbow-delimiters queue projectile paredit org markdown-mode log4e js2-mode javap-mode inf-ruby ido-ubiquitous exec-path-from-shell elm-mode dockerfile-mode company color-theme clojure-mode-extra-font-locking base16-theme android-mode adaptive-wrap)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -22,10 +22,6 @@
 (global-set-key (kbd "S-C-<up>") 'shrink-window)
 (global-set-key (kbd "S-C-<down>") 'enlarge-window)
 
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-
 ;; UUID Generation
 (defun uuidgen ()
   "Insert a UUID at cursor point."
