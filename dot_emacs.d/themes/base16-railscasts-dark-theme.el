@@ -443,6 +443,8 @@
    `(helm-ff-file-extension ((t (:foreground ,base05))))
    `(helm-source-header ((t (:foreground ,base0A :weight bold))))
 
+   `(eshell-prompt ((t (:foreground ,base0D))))
+
    `(custom-variable-tag ((t (:foreground ,base0D))))
    `(custom-group-tag ((t (:foreground ,base0D))))
    `(custom-state ((t (:foreground ,base0B)))))
