@@ -74,3 +74,6 @@
 
 ;; no bell
 (setq ring-bell-function 'ignore)
+
+;; add system shortcut for toggling full screen
+(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
