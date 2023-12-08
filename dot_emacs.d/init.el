@@ -73,6 +73,7 @@
 
     ;; fuzzy searching everywhere
     helm
+    helm-projectile
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
