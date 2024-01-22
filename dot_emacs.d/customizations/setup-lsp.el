@@ -19,6 +19,17 @@
 
 (defvar eglot-server-programs ())
 (add-to-list 'eglot-server-programs `(swift-mode . (,(pado:sourcekit-lsp-path-xcrun-pwsh))))
+(add-to-list 'eglot-server-programs
+             '((typescript-mode) "typescript-language-server" "--stdio"))
 
 (add-hook 'swift-mode-hook 'eglot-ensure)
 (add-hook 'swift-mode-hook 'company-mode)
+(add-hook 'typescript-mode-hook 'eglot-ensure)
+(add-hook 'typescript-mode-hook 'company-mode)
+(add-hook 'typescript-mode-hook 'tree-sitter-hl-mode)
+
+;; add ANSI color to compilation
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point)))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
