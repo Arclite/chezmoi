@@ -1,3 +1,4 @@
+(setq projectile-indexing-method 'hybrid)
 (setq projectile-switch-project-action 'projectile-commander)
 
 (def-projectile-commander-method ?e
