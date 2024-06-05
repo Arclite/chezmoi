@@ -77,3 +77,6 @@
 
 ;; add system shortcut for toggling full screen
 (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+
+;; always refresh buffers when files change
+(global-auto-revert-mode t)
