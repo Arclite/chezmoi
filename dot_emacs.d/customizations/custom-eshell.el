@@ -7,3 +7,17 @@
          (propertize " " 'face 'default))))
 
 (setq eshell-prompt-regexp "^[^»]* » ")
+
+(setenv "FORCE_COLORS" "true")
+
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (setenv "TERM" "eshell")))
+(setq comint-terminfo-terminal "eshell")
+
+;; add ANSI color to compilation
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point)))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
