@@ -129,9 +129,9 @@
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "setup-lsp.el")
+(load "setup-python.el")
 
 (load "custom.el")
-(load "custom-chewy.el")
 (load "custom-eshell.el")
 (load "custom-org.el")
 (load "custom-helm.el")
