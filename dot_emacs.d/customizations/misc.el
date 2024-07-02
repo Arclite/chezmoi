@@ -10,3 +10,6 @@
 
 ;; Go straight to scratch buffer on startup
 (setq inhibit-startup-message t)
+
+;; Fix magit issue
+ (setq package-install-upgrade-built-in t)

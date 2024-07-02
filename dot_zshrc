@@ -54,3 +54,5 @@ alias boots=boot
 
 # Added by Krypton
 export GPG_TTY=$(tty)
+eval "$(~/.local/bin/mise activate zsh)"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

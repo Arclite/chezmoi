@@ -77,3 +77,9 @@
 
 ;; add system shortcut for toggling full screen
 (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+
+;; enable color in compile buffers
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point)))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
