@@ -32,3 +32,5 @@ apps are not started from a shell."
   (if (string-match "\\(pwsh\\)$" (getenv "SHELL"))
       (set-exec-path-from-powershell)
     (set-exec-path-from-shell)))
+
+(setq rg-executable "/opt/homebrew/bin/rg")
