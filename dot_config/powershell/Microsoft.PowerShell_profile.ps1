@@ -18,3 +18,6 @@ New-Alias ls Get-ChildItem
 . "$HOME/.config/powershell/LocalSettings.ps1" | Invoke-Expression
 
 oh-my-posh init pwsh --config ~/.config/powershell/cocoatype.omp.json | Invoke-Expression
+
+# Install PsFzf bindings
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
