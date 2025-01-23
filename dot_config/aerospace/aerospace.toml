@@ -182,6 +182,10 @@ if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace D'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = ['layout floating', 'move-node-to-workspace D']
+
+[[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace I'
 
