@@ -21,3 +21,6 @@ oh-my-posh init pwsh --config ~/.config/powershell/cocoatype.omp.json | Invoke-E
 
 # Install PsFzf bindings
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+# Fix tab completion
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
