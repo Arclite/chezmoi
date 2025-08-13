@@ -80,3 +80,7 @@
 
 ;; always refresh buffers when files change
 (global-auto-revert-mode t)
+
+;; reuse windows if already open
+(setq display-buffer-alist
+      '((".*" (display-buffer-reuse-window display-buffer-same-window))))
