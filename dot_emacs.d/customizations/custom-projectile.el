@@ -1,5 +1,5 @@
 (setq projectile-indexing-method 'hybrid)
-(setq projectile-switch-project-action 'projectile-commander)
+(setq projectile-switch-project-action 'projectile-vc)
 
 (def-projectile-commander-method ?e
   "Open an *eshell* buffer for the project"
