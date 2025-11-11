@@ -1,6 +1,7 @@
-(require 'web-mode)
+;; React Native iOS file support
 
-(add-to-list 'auto-mode-alist '("\\.ios.js\\'" . web-mode))
-
-(setq web-mode-content-types-alist
-      '(("jsx" . "\\.ios.js\\'")))
+(use-package web-mode
+  :mode "\\.ios.js\\'"
+  :config
+  (add-to-list 'web-mode-content-types-alist
+               '("jsx" . "\\.ios.js\\'")))

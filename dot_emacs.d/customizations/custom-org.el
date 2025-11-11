@@ -1,13 +1,18 @@
-(setq org-replace-disputed-keys t)
-(setq org-startup-indented t)
-(setq org-tags-column 0)
+;; Org mode customizations
 
-;; Add agenda shortcuts
-(global-set-key "\C-ca" 'org-agenda)
-(setq org-agenda-custom-commands
-      '(("v" tags-todo "+v1")))
+;; Configure Org mode
+(use-package org
+  :bind (("C-c a" . org-agenda))
+  :config
+  (setq org-replace-disputed-keys t)
+  (setq org-startup-indented t)
+  (setq org-tags-column 0)
 
-;; Fixes for org-mode keybindings
+  ;; Custom agenda commands
+  (setq org-agenda-custom-commands
+        '(("v" tags-todo "+v1"))))
+
+;; Fixes for org-mode keybindings in terminal
 (add-hook 'emacs-startup-hook
           '(lambda ()
              (define-key function-key-map "\e[1;10A" [M-S-up])

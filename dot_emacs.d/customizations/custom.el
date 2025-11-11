@@ -1,26 +1,8 @@
-(defun new-migration (name) 
+;; Custom utility functions
+
+(defun new-migration (name)
   (interactive "New migration name: ")
   (find-file (concat (format-time-string "%y%m%d%H%M%S") "-" name ".sql")))
-
-(menu-bar-mode -1)
-
-(setq tab-width 4)
-
-(set-face-attribute 'default nil
-                    :family "InputMonoNarrow"
-                    :height 180
-                    :weight 'ultra-light)
-
-;; Improve Org mode
-(setq org-replace-disputed-keys t)
-(setq org-startup-indented t)
-(setq org-tags-column 0)
-
-;; Add commands for resizing windows
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<up>") 'shrink-window)
-(global-set-key (kbd "S-C-<down>") 'enlarge-window)
 
 ;; UUID Generation
 (defun uuidgen ()
@@ -31,13 +13,27 @@
     "\n\\'" ""
     (downcase (shell-command-to-string "uuidgen")))))
 
-;; Custom file types
-(add-to-list 'auto-mode-alist '("\\.geojson\\'" . json-mode))
+;; General settings
+(menu-bar-mode -1)
+(setq tab-width 4)
 
-(add-to-list 'auto-mode-alist '("Fastfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Appfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Deliverfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Matchfile\\'" . ruby-mode))
+;; Add commands for resizing windows
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<up>") 'shrink-window)
+(global-set-key (kbd "S-C-<down>") 'enlarge-window)
+
+;; Configure JSON mode
+(use-package json-mode
+  :mode "\\.geojson\\'")
+
+;; Configure Ruby mode for fastlane files
+(use-package ruby-mode
+  :ensure nil  ;; built-in package
+  :mode (("Fastfile\\'" . ruby-mode)
+         ("Appfile\\'" . ruby-mode)
+         ("Deliverfile\\'" . ruby-mode)
+         ("Matchfile\\'" . ruby-mode)))
 
 ;; Key bindings for uncommon characters
 (global-set-key (kbd "M-_") (lambda () (interactive) (insert-char #x2014)))

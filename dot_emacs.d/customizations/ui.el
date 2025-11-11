@@ -36,7 +36,10 @@
 ;; set font
 (set-frame-font "Fira Code 19" nil t)
 
-(setq base16-theme-256-color-source "colors")
+;; Configure base16 theme
+(use-package base16-theme
+  :config
+  (setq base16-theme-256-color-source "colors"))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
@@ -88,7 +91,15 @@
         ("\\*shell.*\\*" (display-buffer-reuse-window))))
 
 ;; support multiple cursors
-(require 'multiple-cursors)
+(use-package multiple-cursors
+  :bind (("M-s-e" . mc/mark-next-like-this)
+         ("M-s-E" . mc/mark-previous-like-this)))
 
-(global-set-key (kbd "M-s-e") 'mc/mark-next-like-this)
-(global-set-key (kbd "M-s-E") 'mc/mark-previous-like-this)
+;; colorful parenthesis matching
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Show keybinding hints
+(use-package which-key
+  :config
+  (which-key-mode))

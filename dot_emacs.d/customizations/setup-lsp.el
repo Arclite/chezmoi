@@ -3,59 +3,53 @@
 (setq gc-cons-threshold 100000000)
 
 ;; allow customizing Projectile commands
-
 (put 'projectile-project-compilation-cmd 'safe-local-variable #'stringp)
 (put 'projectile-project-run-cmd 'safe-local-variable #'stringp)
 
-;; set up for Swift
-
+;; Helper function to get SourceKit LSP path under PowerShell
 (defun pado:sourcekit-lsp-path-xcrun-pwsh ()
   "Get the SourceKit LSP from xcrun under Powershell"
-  (replace-regexp-in-string 
+  (replace-regexp-in-string
    "\n*$" ""
    (with-temp-buffer
      (call-process (getenv "SHELL") nil t nil "-l" "-i" "-c" "xcrun --find sourcekit-lsp")
      (buffer-string))))
 
-(require 'eglot)
+;; Configure Eglot LSP client
+(use-package eglot
+  :config
+  ;; Swift LSP configuration
+  (add-to-list 'eglot-server-programs
+               `(swift-mode . (,(pado:sourcekit-lsp-path-xcrun-pwsh))))
 
-;;; Swift
+  ;; TypeScript LSP configuration
+  (add-to-list 'eglot-server-programs
+               '((typescript-mode) "typescript-language-server" "--stdio"))
+  (add-to-list 'eglot-server-programs
+               '((typescript-ts-mode) "typescript-language-server" "--stdio"))
+  (add-to-list 'eglot-server-programs
+               '((tsx-ts-mode) "typescript-language-server" "--stdio")))
 
-(add-to-list 'eglot-server-programs 
-             `(swift-mode . (,(pado:sourcekit-lsp-path-xcrun-pwsh))))
+;; Configure Company (completion framework)
+(use-package company)
 
-(add-hook 'swift-mode-hook 'eglot-ensure)
-(add-hook 'swift-mode-hook 'company-mode)
+;; Configure Swift mode
+(use-package swift-mode
+  :hook ((swift-mode . eglot-ensure)
+         (swift-mode . company-mode)))
 
-;;; TypeScript
+;; Configure TypeScript modes with Eglot and Company
+(use-package typescript-mode
+  :hook ((typescript-mode . eglot-ensure)
+         (typescript-mode . company-mode)
+         (typescript-mode . tree-sitter-hl-mode)
+         (typescript-ts-mode . eglot-ensure)
+         (typescript-ts-mode . company-mode)
+         (tsx-ts-mode . eglot-ensure)
+         (tsx-ts-mode . company-mode)))
 
-(add-to-list 'eglot-server-programs
-             '((typescript-mode) "typescript-language-server" "--stdio"))
-(add-to-list 'eglot-server-programs
-             '((typescript-ts-mode) "typescript-language-server" "--stdio"))
-(add-to-list 'eglot-server-programs
-             '((tsx-ts-mode) "typescript-language-server" "--stdio"))
+;; Configure tree-sitter
+(use-package tree-sitter)
 
-(add-hook 'typescript-mode-hook 'eglot-ensure)
-(add-hook 'typescript-mode-hook 'company-mode)
-(add-hook 'typescript-mode-hook 'tree-sitter-hl-mode)
-
-(add-hook 'typescript-ts-mode-hook 'eglot-ensure)
-(add-hook 'typescript-ts-mode-hook 'company-mode)
-
-(add-hook 'tsx-ts-mode-hook 'eglot-ensure)
-(add-hook 'tsx-ts-mode-hook 'company-mode)
-
-;;;  Astro
-
-(define-derived-mode astro-mode web-mode "astro")
-(setq auto-mode-alist
-      (append '((".*\\.astro\\'" . astro-mode))
-              auto-mode-alist))
-(add-to-list 'eglot-server-programs
-             '(astro-mode . ("astro-ls" "--stdio"
-                             :initializationOptions
-                             (:typescript (:tsdk "./node_modules/typescript/lib")))))
-(add-hook 'astro-mode-hook 'eglot-ensure)
-(add-hook 'astro-mode-hook 'company-mode)
-(add-hook 'astro-mode-hook 'tree-sitter-hl-mode)
+(use-package tree-sitter-langs
+  :after tree-sitter)

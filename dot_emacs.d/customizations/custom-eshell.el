@@ -1,23 +1,29 @@
-;; Set a custom prompt
-(setq eshell-prompt-function
-      (lambda ()
-        (concat
-         (car (last (split-string (eshell/pwd) "/" t)))
-         (propertize " »" 'face `(:foreground "#b6b3eb"))
-         (propertize " " 'face 'default))))
+;; Eshell customizations
 
-(setq eshell-prompt-regexp "^[^»]* » ")
+;; Custom prompt function
+(defun pado:eshell-prompt ()
+  "Custom eshell prompt showing current directory name"
+  (concat
+   (car (last (split-string (eshell/pwd) "/" t)))
+   (propertize " »" 'face `(:foreground "#b6b3eb"))
+   (propertize " " 'face 'default)))
 
-(setenv "FORCE_COLORS" "true")
-
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (setenv "TERM" "eshell")))
-(setq comint-terminfo-terminal "eshell")
-
-;; add ANSI color to compilation
-(require 'ansi-color)
+;; Function to colorize compilation buffers
 (defun colorize-compilation-buffer ()
   (ansi-color-apply-on-region compilation-filter-start (point)))
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+;; Configure eshell
+(use-package eshell
+  :ensure nil  ;; built-in package
+  :hook (eshell-mode . (lambda ()
+                         (setenv "TERM" "eshell")))
+  :config
+  (setq eshell-prompt-function 'pado:eshell-prompt)
+  (setq eshell-prompt-regexp "^[^»]* » ")
+  (setenv "FORCE_COLORS" "true")
+  (setq comint-terminfo-terminal "eshell"))
+
+;; Add ANSI color support to compilation buffers
+(use-package ansi-color
+  :ensure nil  ;; built-in package
+  :hook (compilation-filter . colorize-compilation-buffer))

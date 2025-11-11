@@ -1,5 +1,7 @@
-;; Include pwsh in the set of non-standard shells
+;; Sets up exec-path-from shell
+;; https://github.com/purcell/exec-path-from-shell
 
+;; Custom function for PowerShell support
 (defun set-exec-path-from-powershell ()
   "Set up Emacs' `exec-path' and PATH environment variable to match
 that used by the user's shell.
@@ -26,11 +28,16 @@ apps are not started from a shell."
   (not (string-match "\\(fish\\|t?csh\\|pwsh\\)$" shell)))
 ;; (advice-add 'exec-path-from-shell--standard-shell-p :override #'exec-path-from-shell--standard-shell-p--including-pwsh)
 
-;; Sets up exec-path-from shell
-;; https://github.com/purcell/exec-path-from-shell
-(when (memq window-system '(mac ns))
+;; Configure exec-path-from-shell package
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :config
+  ;; Use PowerShell-specific function if PowerShell is the shell
   (if (string-match "\\(pwsh\\)$" (getenv "SHELL"))
       (set-exec-path-from-powershell)
     (set-exec-path-from-shell)))
 
-(setq rg-executable "/opt/homebrew/bin/rg")
+;; Configure ripgrep executable path
+(use-package rg
+  :config
+  (setq rg-executable "/opt/homebrew/bin/rg"))

@@ -12,4 +12,4 @@
 (setq inhibit-startup-message t)
 
 ;; Fix magit issue
- (setq package-install-upgrade-built-in t)
+(setq package-install-upgrade-built-in t)

@@ -1,15 +1,26 @@
 ;; javascript / html
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
-(add-hook 'js-mode-hook 'subword-mode)
-(add-hook 'html-mode-hook 'subword-mode)
-(setq js-indent-level 2)
-(eval-after-load "sgml-mode"
-  '(progn
-     (require 'tagedit)
-     (tagedit-add-paredit-like-keybindings)
-     (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))
 
+;; Configure JavaScript mode
+(use-package js-mode
+  :ensure nil  ;; built-in package
+  :mode "\\.js\\'"
+  :hook (js-mode . subword-mode)
+  :config
+  (setq js-indent-level 2))
 
-;; typescript
-(add-to-list 'auto-mode-alist '("\\.ts$" . typescript-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx$" . tsx-ts-mode))
+;; Configure HTML mode
+(use-package sgml-mode
+  :ensure nil  ;; built-in package
+  :hook (html-mode . subword-mode))
+
+;; Configure tagedit for HTML tag editing
+(use-package tagedit
+  :after sgml-mode
+  :hook (html-mode . tagedit-mode)
+  :config
+  (tagedit-add-paredit-like-keybindings))
+
+;; Configure TypeScript with tree-sitter
+(use-package typescript-mode
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode)))
