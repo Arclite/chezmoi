@@ -7,4 +7,4 @@
 
 (projectile-register-project-type 'tuist '("Project.swift")
                                   :project-file "Project.swift"
-				  :compile "burgerburgerburg generate")
+				  :compile "mise run generate")
