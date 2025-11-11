@@ -70,3 +70,11 @@
     (quit nil)))
 
 (setq electric-indent-mode nil)
+
+;; insert a file header
+(defun insert-file-header ()
+  "Insert a file header with current date and copyright."
+  (interactive)
+  (let ((date (format-time-string "%m/%d/%y"))
+        (year (format-time-string "%Y")))
+    (insert (format "//  Created by Geoff Pado on %s.\n//  Copyright © %s Cocoatype, LLC. All rights reserved.\n\n" date year))))
