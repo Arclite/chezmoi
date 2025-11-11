@@ -84,3 +84,9 @@
 ;; reuse windows if already open
 (setq display-buffer-alist
       '((".*" (display-buffer-reuse-window display-buffer-same-window))))
+
+;; support multiple cursors
+(require 'multiple-cursors)
+
+(global-set-key (kbd "M-s-e") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-s-E") 'mc/mark-previous-like-this)
