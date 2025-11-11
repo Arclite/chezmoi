@@ -83,7 +83,9 @@
 
 ;; reuse windows if already open
 (setq display-buffer-alist
-      '((".*" (display-buffer-reuse-window display-buffer-same-window))))
+      '(("^magit: " (display-buffer-reuse-window))
+        ("\\*eshell.*\\*" (display-buffer-reuse-window))
+        ("\\*shell.*\\*" (display-buffer-reuse-window))))
 
 ;; support multiple cursors
 (require 'multiple-cursors)
