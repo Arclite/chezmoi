@@ -16,7 +16,13 @@
 (use-package eshell
   :ensure nil  ;; built-in package
   :hook (eshell-mode . (lambda ()
-                         (setenv "TERM" "eshell")))
+                         (setenv "TERM" "eshell")
+                         (add-hook 'eshell-output-filter-functions
+                                   (lambda ()
+                                     (ansi-osc-apply-on-region
+                                      eshell-last-output-start
+                                      eshell-last-output-end))
+                                   nil t)))
   :config
   (setq eshell-prompt-function 'pado:eshell-prompt)
   (setq eshell-prompt-regexp "^[^»]* » ")

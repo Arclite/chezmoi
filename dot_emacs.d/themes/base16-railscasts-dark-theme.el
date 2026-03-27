@@ -35,8 +35,8 @@
    `(fringe ((t (:background ,base02))))
    `(gui-element ((t (:background ,base03 :foreground ,base06))))
    `(highlight ((t (:background ,base01))))
-   `(link ((t (:foreground ,base0D))))
-   `(link-visited ((t (:foreground ,base0E))))
+   `(link ((t (:foreground ,base0D :underline t))))
+   `(link-visited ((t (:foreground ,base0E :underline t))))
    `(minibuffer-prompt ((t (:foreground ,base0D))))
    `(mode-line ((t (:background ,base02 :foreground ,base04 :box nil))))
    `(mode-line-buffer-id ((t (:foreground ,base0E :background nil))))
@@ -237,7 +237,6 @@
    `(magit-log-head-label-tags ((t (:foreground ,base0C :box nil :weight bold))))
    `(magit-section-title ((t (:inherit diff-hunk-header))))
 
-   `(link ((t (:foreground nil :underline t))))
    `(widget-button ((t (:underline t))))
    `(widget-field ((t (:background ,base03 :box (:line-width 1 :color ,base06)))))
 
