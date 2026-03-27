@@ -85,6 +85,7 @@
 (load "custom-org.el")
 (load "custom-helm.el")
 (load "custom-projectile.el")
+(load "git.el")
 (load "llm.el")
 (load "tuist.el")
 
