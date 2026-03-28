@@ -33,3 +33,14 @@
 (use-package ansi-color
   :ensure nil  ;; built-in package
   :hook (compilation-filter . colorize-compilation-buffer))
+
+;; Add ANSI link support to compilation buffers
+(defun linkify-compilation-buffer ()
+  (ansi-osc-apply-on-region compilation-filter-start (point)))
+
+(use-package ansi-osc
+  :ensure nil
+  :hook (compilation-filter . linkify-compilation-buffer))
+
+;; Scroll compilation buffer automatically
+(setq compilation-scroll-output t)
