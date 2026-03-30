@@ -87,6 +87,7 @@
 (load "custom-projectile.el")
 (load "git.el")
 (load "llm.el")
+(load "swift.el")
 (load "tuist.el")
 
 ;; React bindings
@@ -139,6 +140,10 @@
  '(org-agenda-files '("~/Development/iOS/PlaygroundShare/shareplay.org"))
  '(org-startup-truncated nil)
  '(package-selected-packages nil)
+ '(package-vc-selected-packages
+   '((swift-ts-mode :url
+                    "https://codeberg.org/woolsweater/swift-ts-mode.git"
+                    :branch "main")))
  '(swift-mode:parenthesized-expression-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

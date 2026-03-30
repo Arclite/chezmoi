@@ -20,7 +20,7 @@
   :config
   ;; Swift LSP configuration
   (add-to-list 'eglot-server-programs
-               `(swift-mode . (,(pado:sourcekit-lsp-path-xcrun-pwsh))))
+               `(swift-ts-mode . (,(pado:sourcekit-lsp-path-xcrun-pwsh))))
 
   ;; TypeScript LSP configuration
   (add-to-list 'eglot-server-programs
@@ -32,11 +32,6 @@
 
 ;; Configure Company (completion framework)
 (use-package company)
-
-;; Configure Swift mode
-(use-package swift-mode
-  :hook ((swift-mode . eglot-ensure)
-         (swift-mode . company-mode)))
 
 ;; Configure TypeScript modes with Eglot and Company
 (use-package typescript-mode
