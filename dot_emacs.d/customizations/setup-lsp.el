@@ -33,6 +33,17 @@
 ;; Configure Company (completion framework)
 (use-package company)
 
+;; Configure YASnippet (code snippets)
+(use-package yasnippet
+  :ensure t
+  :config
+  (setq
+   yas-verbosity 1
+   yas-wrap-around-region t)
+
+  (yas-reload-all)
+  (yas-global-mode))
+
 ;; Configure TypeScript modes with Eglot and Company
 (use-package typescript-mode
   :hook ((typescript-mode . eglot-ensure)
