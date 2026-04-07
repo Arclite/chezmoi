@@ -41,3 +41,6 @@ apps are not started from a shell."
 (use-package rg
   :config
   (setq rg-executable "/opt/homebrew/bin/rg"))
+
+;; Fix C compiler environment variable
+(setenv "CC" "/usr/bin/clang")

@@ -28,7 +28,8 @@
   (add-to-list 'eglot-server-programs
                '((typescript-ts-mode) "typescript-language-server" "--stdio"))
   (add-to-list 'eglot-server-programs
-               '((tsx-ts-mode) "typescript-language-server" "--stdio")))
+               '((tsx-ts-mode) "typescript-language-server" "--stdio"))
+  (setq compilation-always-kill t))
 
 ;; Configure Company (completion framework)
 (use-package company)
