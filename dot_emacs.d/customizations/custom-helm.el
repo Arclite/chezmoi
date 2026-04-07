@@ -57,6 +57,13 @@
 (use-package helm-projectile
   :after (helm projectile)
   :config
+  ;; Fix: helm-projectile reuses helm-find-files-action-transformer which
+  ;; calls helm-ff--in-backup-directory, but helm-ff-default-directory is
+  ;; nil outside of helm-find-files sessions, causing file-equal-p to error.
+  (advice-add 'helm-ff--in-backup-directory :around
+              (lambda (orig-fn &rest args)
+                (when helm-ff-default-directory
+                  (apply orig-fn args))))
   (helm-projectile-on))
 
 ;; Configure Helm-RG (ripgrep integration)
