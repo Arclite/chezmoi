@@ -77,3 +77,8 @@
   (let ((date (format-time-string "%m/%d/%y"))
         (year (format-time-string "%Y")))
     (insert (format "//  Created by Geoff Pado on %s.\n//  Copyright © %s Cocoatype, LLC. All rights reserved.\n\n" date year))))
+
+;; prevent trailing whitespace
+(use-package ws-butler
+  :ensure t
+  :hook (prog-mode . ws-butler-mode))
