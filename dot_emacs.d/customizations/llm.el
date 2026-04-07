@@ -15,6 +15,7 @@
     :ensure-system-package ((claude . "curl -fsSL https://claude.ai/install.sh | bash")
                             (claude-agent-acp . "npm i -g @agentclientprotocol/claude-agent-acp"))
     :config
-    (setq agent-shell-header-style nil)
-    (setq agent-shell-preferred-agent-config (agent-shell-anthropic-make-claude-code-config))
-    (setq agent-shell-anthropic-default-session-mode-id "plan"))
+    (setq agent-shell-header-style nil
+          agent-shell-preferred-agent-config (agent-shell-anthropic-make-claude-code-config)
+          agent-shell-anthropic-default-session-mode-id "plan"
+          agent-shell-context-sources '(files region error)))
