@@ -10,7 +10,8 @@
 
 ;; Function to colorize compilation buffers
 (defun colorize-compilation-buffer ()
-  (ansi-color-apply-on-region compilation-filter-start (point)))
+  (let ((inhibit-modification-hooks t))
+    (ansi-color-apply-on-region compilation-filter-start (point))))
 
 ;; Configure eshell
 (use-package eshell
@@ -36,7 +37,8 @@
 
 ;; Add ANSI link support to compilation buffers
 (defun linkify-compilation-buffer ()
-  (ansi-osc-apply-on-region compilation-filter-start (point)))
+  (let ((inhibit-modification-hooks t))
+    (ansi-osc-apply-on-region compilation-filter-start (point))))
 
 (use-package ansi-osc
   :ensure nil
