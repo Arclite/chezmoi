@@ -45,3 +45,26 @@
 
   (yas-reload-all)
   (yas-global-mode))
+
+;; Configure dape (Debug Adapter)
+(use-package dape
+  :ensure t
+  :custom
+  (dape-cwd-function #'projectile-project-root)
+  :config
+  (add-to-list 'dape-configs
+               '(xcede
+                 modes (swift-mode swift-ts-mode)
+                 ensure dape-ensure-command
+                 command (expand-file-name "~/.local/bin/xcede")
+                 command-cwd dape-command-cwd
+                 :type "Swift"
+                 :request "launch"
+                 :cwd dape-cwd
+                 :program "xcede:")))
+
+;; Configure flymake visuals
+(use-package flymake
+  :ensure nil ;; built-in package
+  :custom
+  (flymake-show-diagnostics-at-end-of-line 'fancy))
