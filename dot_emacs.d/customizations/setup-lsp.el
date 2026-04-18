@@ -17,6 +17,8 @@
 
 ;; Configure Eglot LSP client
 (use-package eglot
+  :custom
+  (compilation-always-kill t)
   :config
   ;; Swift LSP configuration
   (add-to-list 'eglot-server-programs
@@ -28,8 +30,7 @@
   (add-to-list 'eglot-server-programs
                '((typescript-ts-mode) "typescript-language-server" "--stdio"))
   (add-to-list 'eglot-server-programs
-               '((tsx-ts-mode) "typescript-language-server" "--stdio"))
-  (setq compilation-always-kill t))
+               '((tsx-ts-mode) "typescript-language-server" "--stdio")))
 
 ;; Configure Company (completion framework)
 (use-package company)
