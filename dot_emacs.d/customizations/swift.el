@@ -37,3 +37,8 @@
       " "
       my/copyright-owner
       ". All rights reserved." \n \n _ \n)))
+
+;; highlight strings files
+(use-package c-mode
+  :ensure nil ;; built-in package
+  :mode "\\.strings\\'")
