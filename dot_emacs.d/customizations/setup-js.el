@@ -20,7 +20,13 @@
   :config
   (tagedit-add-paredit-like-keybindings))
 
-;; Configure TypeScript with tree-sitter
+;; Configure TypeScript editing
 (use-package typescript-mode
+  :hook ((typescript-mode . eglot-ensure)
+         (typescript-mode . company-mode)
+         (typescript-ts-mode . eglot-ensure)
+         (typescript-ts-mode . company-mode)
+         (tsx-ts-mode . eglot-ensure)
+         (tsx-ts-mode . company-mode))
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode)))

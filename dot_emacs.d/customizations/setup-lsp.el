@@ -45,12 +45,3 @@
 
   (yas-reload-all)
   (yas-global-mode))
-
-;; Configure TypeScript modes with Eglot and Company
-(use-package typescript-mode
-  :hook ((typescript-mode . eglot-ensure)
-         (typescript-mode . company-mode)
-         (typescript-ts-mode . eglot-ensure)
-         (typescript-ts-mode . company-mode)
-         (tsx-ts-mode . eglot-ensure)
-         (tsx-ts-mode . company-mode)))
