@@ -82,3 +82,8 @@
 (use-package ws-butler
   :ensure t
   :hook (prog-mode . ws-butler-mode))
+
+;; easily enable subword mode
+(use-package subword
+  :ensure nil ;; built-in package
+  :bind (("C-c C-w" . subword-mode)))
