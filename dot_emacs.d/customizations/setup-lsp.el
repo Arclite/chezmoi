@@ -49,14 +49,7 @@
 (use-package typescript-mode
   :hook ((typescript-mode . eglot-ensure)
          (typescript-mode . company-mode)
-         (typescript-mode . tree-sitter-hl-mode)
          (typescript-ts-mode . eglot-ensure)
          (typescript-ts-mode . company-mode)
          (tsx-ts-mode . eglot-ensure)
          (tsx-ts-mode . company-mode)))
-
-;; Configure tree-sitter
-(use-package tree-sitter)
-
-(use-package tree-sitter-langs
-  :after tree-sitter)
