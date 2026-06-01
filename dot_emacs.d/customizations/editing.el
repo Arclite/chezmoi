@@ -86,4 +86,8 @@
 ;; easily enable subword mode
 (use-package subword
   :ensure nil ;; built-in package
-  :bind (("C-c C-w" . subword-mode)))
+  :bind
+  (("C-c C-w" . subword-mode)
+   ("C-<backspace>" . subword-backward-kill)
+   ("C-<left>" . subword-left)
+   ("C-<right>" . subword-right)))
