@@ -71,6 +71,9 @@
 ;; Hard-to-categorize customizations
 (load "misc.el")
 
+;; Modeline cleanup
+(load "modeline.el")
+
 ;; For editing lisps
 (load "elisp-editing.el")
 
