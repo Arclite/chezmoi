@@ -35,7 +35,10 @@ apps are not started from a shell."
   ;; Use PowerShell-specific function if PowerShell is the shell
   (if (string-match "\\(pwsh\\)$" (getenv "SHELL"))
       (set-exec-path-from-powershell)
-    (set-exec-path-from-shell)))
+    (set-exec-path-from-shell))
+  (let ((shims (expand-file-name "~/.local/share/mise/shims")))
+    (setenv "PATH" (concat shims path-separator (getenv "PATH")))
+    (add-to-list 'exec-path shims)))
 
 ;; Configure ripgrep executable path
 (use-package rg
