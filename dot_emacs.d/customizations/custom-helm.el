@@ -65,7 +65,7 @@
                 (when helm-ff-default-directory
                   (apply orig-fn args))))
   (helm-projectile-on)
-    ;; Contiguity- and path-aware matching for project files.
+  ;; Contiguity- and path-aware matching for project files.
   (load "helm-file-matcher.el")
   (pado/hfm-install))
 
