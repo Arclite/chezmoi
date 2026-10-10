@@ -8,9 +8,18 @@
    (propertize " »" 'face `(:foreground "#b6b3eb"))
    (propertize " " 'face 'default)))
 
-;; Function to colorize compilation buffers
+;; Function to colorize compilation buffers.
+;; ansi-color keeps per-buffer state in `ansi-color-context-region'; that state
+;; occasionally gets corrupted (its marker slot ends up holding a plain
+;; integer), after which every `compilation-filter-hook' call throws
+;; "Wrong type argument: markerp, N" until the buffer is recreated.  Binding it
+;; to nil makes each call stateless -- the same immunity helm's ansi-color
+;; reimplementation and envrc rely on -- so the corruption can never accumulate.
+;; Tradeoff: an SGR sequence split across two output chunks won't carry over,
+;; which is rare and cosmetic for compilation output.
 (defun colorize-compilation-buffer ()
-  (let ((inhibit-modification-hooks t))
+  (let ((inhibit-read-only t)
+        (ansi-color-context-region nil))
     (ansi-color-apply-on-region compilation-filter-start (point))))
 
 ;; Configure eshell
@@ -37,8 +46,13 @@
 
 ;; Add ANSI link support to compilation buffers
 (defun linkify-compilation-buffer ()
-  (let ((inhibit-modification-hooks t))
-    (ansi-osc-apply-on-region compilation-filter-start (point))))
+  (let ((inhibit-read-only t))
+    (condition-case nil
+        (ansi-osc-apply-on-region compilation-filter-start (point))
+      (error
+       (setq ansi-osc--marker nil)
+       (ignore-errors
+         (ansi-osc-apply-on-region compilation-filter-start (point)))))))
 
 (use-package ansi-osc
   :ensure nil
