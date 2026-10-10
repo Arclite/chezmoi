@@ -50,7 +50,8 @@
 (use-package dape
   :ensure t
   :custom
-  (dape-cwd-function #'projectile-project-root)
+  ((dape-cwd-function #'projectile-project-root)
+   (dape-request-timeout 60))
   :config
   (add-to-list 'dape-configs
                '(xcede
