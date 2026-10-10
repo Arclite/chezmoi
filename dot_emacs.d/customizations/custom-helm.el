@@ -64,7 +64,10 @@
               (lambda (orig-fn &rest args)
                 (when helm-ff-default-directory
                   (apply orig-fn args))))
-  (helm-projectile-on))
+  (helm-projectile-on)
+    ;; Contiguity- and path-aware matching for project files.
+  (load "helm-file-matcher.el")
+  (pado/hfm-install))
 
 ;; Configure Helm-RG (ripgrep integration)
 (use-package helm-rg
