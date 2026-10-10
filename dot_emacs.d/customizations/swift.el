@@ -42,3 +42,13 @@
 (use-package c-mode
   :ensure nil ;; built-in package
   :mode "\\.strings\\'")
+
+(use-package flowdeck
+  :vc (:url "git@github.com:Arclite/flowdeck.el.git"
+       :branch "trunk")
+  :ensure t
+  :bind (:map projectile-command-map
+              ("x f" . flowdeck-menu)
+              ("x r" . flowdeck-run)
+              ("x b" . flowdeck-build)
+              ("x t" . flowdeck-test)))
