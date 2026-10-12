@@ -1,6 +1,14 @@
+;; swift-ts-mode and its grammar must be a MATCHED PAIR — the package probes the
+;; grammar for an exact version-marker node, and newer grammars change node
+;; structure (e.g. operator_declaration) that older package queries can't read.
+;; Pinned pair: package v0.5.2  <->  tree-sitter-swifter grammar v0.9.21.
+;; The grammar is a prebuilt dylib in ~/.emacs.d/tree-sitter/libtree-sitter-swift.dylib
+;; from https://codeberg.org/woolsweater/tree-sitter-swifter/releases/tag/v0.9.21
+;; (arch-specific: arm64/swift.dylib renamed to libtree-sitter-swift.dylib).
+;; Do NOT bump the grammar past v0.9.21 without also bumping :rev below.
 (use-package swift-ts-mode
   :vc (:url "https://codeberg.org/woolsweater/swift-ts-mode.git"
-       :branch "main")
+       :rev "v0.5.2")
   :ensure t
   :mode "\\.swift\\'"
   :custom ((swift-ts-basic-offset 4)
