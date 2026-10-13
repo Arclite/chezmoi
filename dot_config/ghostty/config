@@ -1,6 +1,6 @@
 font-family = "Fira Code Regular"
 font-size = 19
-command = "/opt/homebrew/opt/powershell/bin/pwsh"
+command = "/opt/homebrew/bin/pwsh"
 palette = 0=#2b2b2b
 palette = 1=#da4939
 palette = 2=#a5c261
