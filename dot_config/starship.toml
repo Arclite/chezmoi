@@ -1,0 +1,30 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = "$directory$git_branch$character\u001b7${fill}$status$hostname\u001b8"
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = '[»](purple)'
+error_symbol = '[»](purple)'
+
+[directory]
+style = 'blue'
+
+[git_branch]
+format = '[\(](blue)[$branch](green)[\)](blue) '
+
+[hostname]
+ssh_only = false
+format = '[$hostname]($style)'
+style = 'bright-black'
+
+[status]
+disabled = false
+symbol = '↵'
+style = "red"
+format = '[$status]($style) '
