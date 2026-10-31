@@ -57,6 +57,10 @@
 ;; environment variables
 (load "shell-integration.el")
 
+;; Per-project environments via direnv/Flox (so Magit & friends pick up
+;; the Flox developer environment and its Git hooks work).
+(load "flox-env.el")
+
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
 (load "navigation.el")
@@ -88,9 +92,12 @@
 (load "custom-org.el")
 (load "custom-helm.el")
 (load "custom-projectile.el")
+(load "go.el")
 (load "git.el")
 (load "llm.el")
 (load "swift.el")
+(load "kotlin.el")
+(load "terraform.el")
 (load "tuist.el")
 
 ;; React bindings
