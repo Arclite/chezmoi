@@ -5,15 +5,15 @@ add_newline = false
 
 format = "$directory$git_branch$character\u001b7${fill}$status$hostname\u001b8"
 
-[fill]
-symbol = " "
-
 [character]
 success_symbol = '[»](purple)'
 error_symbol = '[»](purple)'
 
 [directory]
 style = 'blue'
+
+[fill]
+symbol = " "
 
 [git_branch]
 format = '[\(](blue)[$branch](green)[\)](blue) '
