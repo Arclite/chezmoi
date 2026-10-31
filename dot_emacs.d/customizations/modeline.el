@@ -17,6 +17,9 @@
 (with-eval-after-load 'projectile (diminish 'projectile-mode))
 (with-eval-after-load 'subword    (diminish 'subword-mode))
 (with-eval-after-load 'abbrev     (diminish 'abbrev-mode))
+(with-eval-after-load 'agent-shell-ui         (diminish 'agent-shell-ui-mode))
+(with-eval-after-load 'agent-shell-completion (diminish 'agent-shell-completion-mode))
+(with-eval-after-load 'envrc                  (diminish 'envrc-mode))
 
 ;; Eglot: drop the always-on menu icon and session label.
 ;; Keep the conditional segments — they only show when there's something to say.
