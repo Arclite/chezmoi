@@ -62,7 +62,34 @@
                  :type "Swift"
                  :request "launch"
                  :cwd dape-cwd
-                 :program "xcede:")))
+                 :program "xcede:"))
+  (add-to-list 'dape-configs
+               '(playdate
+                 modes (swift-mode swift-ts-mode)
+                 ensure dape-ensure-command
+                 command (lambda ()
+                           (let* ((default-directory (dape-cwd))
+                                  (swift (string-trim
+                                          (shell-command-to-string "mise which swift")))
+                                  (root (file-name-directory
+                                         (directory-file-name
+                                          (file-name-directory swift)))))
+                             (expand-file-name "usr/bin/lldb-dap" root)))
+                 command-cwd dape-command-cwd
+                 :type "lldb-dap"
+                 :request "launch"
+                 :cwd dape-cwd
+                 :program (lambda ()
+                            (expand-file-name
+                             "bin/Playdate Simulator.app/Contents/MacOS/Playdate Simulator"
+                             (or (getenv "PLAYDATE_SDK_PATH")
+                                 (expand-file-name "~/Developer/PlaydateSDK/"))))
+                 :args (lambda ()
+                         (let ((pdx (car (file-expand-wildcards
+                                          (expand-file-name
+                                           ".build/plugins/PDCPlugin/outputs/*.pdx"
+                                           (dape-cwd))))))
+                           (if pdx (vector pdx) (vector)))))))
 
 ;; Configure flymake visuals
 (use-package flymake
