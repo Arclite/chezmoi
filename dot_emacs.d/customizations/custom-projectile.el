@@ -15,10 +15,4 @@
               ("s r" . rg-project))
   :custom
   (projectile-indexing-method 'hybrid) ;; Use hybrid indexing method
-  (projectile-switch-project-action 'projectile-vc)
-
-  :config
-  ;; Add eshell commander method
-  (def-projectile-commander-method ?e
-    "Open an *eshell* buffer for the project"
-    (projectile-run-eshell)))
+  (projectile-switch-project-action 'projectile-vc))
