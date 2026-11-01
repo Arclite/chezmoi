@@ -92,7 +92,6 @@
 (load "custom-org.el")
 (load "custom-helm.el")
 (load "custom-projectile.el")
-(load "go.el")
 (load "git.el")
 (load "llm.el")
 (load "swift.el")
