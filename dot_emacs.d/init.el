@@ -148,19 +148,7 @@
  '(flymake-luac-program "/Users/pado/.asdf/installs/lua/5.4.3/bin/luac")
  '(org-agenda-files '("~/Development/iOS/PlaygroundShare/shareplay.org"))
  '(org-startup-truncated nil)
- '(package-selected-packages
-   '(ac-cider agent-shell base16-theme bazel caddyfile-mode
-              clojure-mode-extra-font-locking company counsel-jq dape
-              diminish docker-compose-mode dockerfile-mode
-              editorconfig eglot envrc erc exec-path-from-shell faceup
-              flowdeck flycheck flymake-lua flymake-quickdef go-mode
-              gptel helm-projectile helm-rg idlwave json-mode
-              kotlin-ts-mode lua-mode magit markdown-mode minions
-              multiple-cursors org paredit peg powershell python
-              rainbow-delimiters restclient-helm restclient-jq rg smex
-              swift-ts-mode tagedit terraform-ts-mode track-changes
-              tramp tree-sitter-langs typescript-mode verilog-mode
-              web-mode which-key window-tool-bar ws-butler yasnippet))
+ '(package-selected-packages nil)
  '(package-vc-selected-packages
    '((swift-ts-mode :url
                     "https://codeberg.org/woolsweater/swift-ts-mode.git"
