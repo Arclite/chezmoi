@@ -93,9 +93,10 @@
 (load "custom-helm.el")
 (load "custom-projectile.el")
 (load "git.el")
-(load "llm.el")
-(load "swift.el")
 (load "kotlin.el")
+(load "llm.el")
+(load "server.el")
+(load "swift.el")
 (load "terraform.el")
 (load "tuist.el")
 
